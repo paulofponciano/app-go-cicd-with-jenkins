@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage ('Build Image') {
+        stage ('Build') {
             steps {
                 script {
                     dockerapp = docker.build("paulofponciano/webgo:${env.BUILD_ID}", '-f ./Dockerfile ./') 
@@ -10,7 +10,7 @@ pipeline {
             }
         }
 
-        stage ('Push Image') {
+        stage ('Push') {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
@@ -21,7 +21,7 @@ pipeline {
             }
         }
 
-        stage ('Deploy Kubernetes') {
+        stage ('Deploy') {
             environment {
                 tag_version = "${env.BUILD_ID}"
             }
