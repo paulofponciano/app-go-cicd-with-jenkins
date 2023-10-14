@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webgo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webgo
+  template:
+    metadata:
+      labels:
+        app: webgo
+    spec:
+      containers:
+      - name: webgo
+        image: webgo
+        ports:
+        - containerPort: 8080
