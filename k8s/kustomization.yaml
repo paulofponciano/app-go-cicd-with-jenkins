@@ -8,5 +8,4 @@ resources:
 namespace: webgo
 images:
 - name: webgo
-  newName: paulofponciano/webgo
-  newTag: {{tag}}
+  newName: paulofponciano/webgo:{{tag}}
